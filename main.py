@@ -1,5 +1,7 @@
+
 import requests
 import selectorlib
+from emailing import send_email
 
 URL = "https://programmer100.pythonanywhere.com/tours/"
 HEADERS = {
@@ -18,10 +20,6 @@ def extract(source):
     extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
     value = extractor.extract(source)["tours"]
     return value
-
-
-def send_email():
-    print("Email was sent!")
 
 
 def store(extracted):
@@ -43,4 +41,4 @@ if __name__ == "__main__":
     if extracted != "No upcoming tours":
         if extracted not in content:
             store(extracted)
-            send_email()
+            send_email(message="New event discovered")
