@@ -41,5 +41,5 @@ if __name__ == "__main__":
         if extracted != "No upcoming tours":
             if extracted not in content:
                 store(extracted)
-                send_email(message="New event discovered")
-        time.sleep(14400)
+                send_email(subject="Event Update", message="New event discovered")
+        time.sleep(3600)
